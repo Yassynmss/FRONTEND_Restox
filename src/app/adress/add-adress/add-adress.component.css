@@ -1,0 +1,16 @@
+.form-container {
+    background-color: black;
+    padding: 20px;
+    margin-top: 150px; /* Ajustez cette valeur pour ajouter plus d'espace en haut */
+  }
+  
+  .form-control {
+    background-color: white;
+    color: black;
+  }
+  
+  button[type="submit"] {
+    background-color: #dc3545; /* Rouge Bootstrap par défaut */
+    color: white;
+  }
+  

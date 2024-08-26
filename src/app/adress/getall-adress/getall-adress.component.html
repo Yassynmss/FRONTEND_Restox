@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Liste des Adresses</h2>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Adresse 1</th>
+          <th>Adresse 2</th>
+          <th>Ville</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adresse of adresses">
+          <td>{{ adresse.adressID }}</td>
+          <td>{{ adresse.line1 }}</td>
+          <td>{{ adresse.line2 }}</td>
+          <td>{{ adresse.ville }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

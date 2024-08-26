@@ -1,0 +1,17 @@
+.section-heading h3 {
+    font-size: 1.5rem; /* Réduit la taille du titre */
+    line-height: 1.2; /* Ajuste l'espacement */
+}
+
+.section-heading p {
+    font-size: 1rem; /* Réduit la taille du texte */
+}
+
+.menu-item-name-home h6, .menu-item-price-home h6 {
+    font-size: 1rem; /* Réduit la taille des éléments de menu */
+}
+
+.btn-style-white {
+    font-size: 0.875rem; /* Réduit la taille du bouton */
+    font-weight: 600; /* Améliore la lisibilité */
+}
