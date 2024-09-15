@@ -1,1 +1,15 @@
-<p>getalltem-detail works!</p>
+<div class="currency-container">
+    <div class="currency-card" *ngFor="let itemDetail of itemDetailList">
+        <div class="currency-details">
+            
+            <p><strong>Description:</strong> {{ itemDetail.description }}</p>
+            <p><strong>HTML Description:</strong> {{ itemDetail.htmlDescription }}</p>
+
+            <div [innerHTML]="itemDetail.htmlDescription"></div>
+        </div>
+        <div class="currency-actions">
+            <button (click)="editItemDetail(itemDetail)" class="edit-button">Edit</button>
+            <button (click)="itemDetail.itemDetailID !== undefined && deleteItemDetail(itemDetail.itemDetailID)" class="delete-button">Delete</button>
+        </div>
+    </div>
+</div>

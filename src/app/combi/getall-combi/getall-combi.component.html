@@ -1,1 +1,17 @@
-<p>getall-combi works!</p>
+<div class="combi-container">
+    <div class="combi-card" *ngFor="let combi of combiList">
+      <div class="combi-details">
+        <p><strong>Combi Code:</strong> {{ combi.combiCode }}</p>
+        <p><strong>Price:</strong> ${{ combi.price }}</p>
+        <p><strong>Discount:</strong> {{ combi.discount }}%</p>
+        <p><strong>Display Price:</strong> ${{ combi.displayPrice }}</p>
+      </div>
+      <div class="combi-actions">
+        <button (click)="editCombi(combi)" class="edit-button">Edit</button>
+        <button (click)="combi.combiID !== undefined && deleteCombi(combi.combiID)" class="delete-button">Delete</button>
+      </div>
+    </div>
+    
+
+  </div>
+  

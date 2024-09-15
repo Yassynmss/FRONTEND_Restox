@@ -1,0 +1,53 @@
+/* Apply background color and centering to the container */
+.currency-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center cards horizontally */
+    align-items: center; /* Center cards vertically */
+    background-color: #2c2c2c; /* Dark gray background */
+    padding: 20px;
+    min-height: 100vh; /* Ensure the container takes full height */
+}
+
+/* Style individual item detail cards */
+.currency-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    padding: 20px;
+    margin: 10px;
+    width: 300px; /* Adjust card width as needed */
+}
+
+/* Style the details inside the card */
+.currency-details {
+    margin-bottom: 20px;
+}
+
+/* Style action buttons */
+.currency-actions {
+    text-align: center; /* Center buttons */
+}
+
+.edit-button,
+.delete-button {
+    background-color: #007bff; /* Blue background for edit button */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red background for delete button */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}

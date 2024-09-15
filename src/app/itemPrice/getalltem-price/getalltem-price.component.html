@@ -1,1 +1,13 @@
-<p>getalltem-price works!</p>
+<div class="item-price-container">
+    <div class="item-price-card" *ngFor="let itemPrice of itemPriceList">
+        <div class="item-price-details">
+            <p><strong>Price:</strong> {{ itemPrice.price | currency }}</p>
+            <p><strong>Discount:</strong> {{ itemPrice.discount }}%</p>
+            <p><strong>Display Price:</strong> {{ itemPrice.displayPrice | currency }}</p>
+        </div>
+        <div class="item-price-actions">
+            <button (click)="editItemPrice(itemPrice)" class="edit-button">Edit</button>
+            <button (click)="itemPrice.itemPriceID !== undefined && deleteItemPrice(itemPrice.itemPriceID)" class="delete-button">Delete</button>
+        </div>
+    </div>
+</div>

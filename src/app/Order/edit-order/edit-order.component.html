@@ -1,1 +1,59 @@
-<p>edit-order works!</p>
+<div class="edit-order-container">
+    <div class="form-wrapper">
+      <h2>Edit Order</h2>
+  
+      <form [formGroup]="editOrderForm" (ngSubmit)="onSubmit()">
+        
+      
+  
+        <div class="form-group">
+            <label for="orderDate">Order Date</label>
+            <input type="datetime-local" id="orderDate" formControlName="orderDate" class="form-control" />
+          </div>
+          
+  
+        <!-- Payment Method -->
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method</label>
+          <select id="paymentMethod" formControlName="paymentMethod" class="form-control">
+            <option *ngFor="let method of paymentMethods" [value]="method.id">{{ method.name }}</option>
+          </select>
+          <div *ngIf="editOrderForm.get('paymentMethod')?.invalid && editOrderForm.get('paymentMethod')?.touched" class="error">
+            Payment method is required.
+          </div>
+        </div>
+  
+        <!-- Payment Status -->
+        <div class="form-group">
+          <label for="paymentStatus">Payment Status</label>
+          <select id="paymentStatus" formControlName="paymentStatus" class="form-control">
+            <option *ngFor="let status of paymentStatusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+  
+        <!-- Delivery Status -->
+        <div class="form-group">
+          <label for="deliveryStatusID">Delivery Status</label>
+          <select id="deliveryStatusID" formControlName="deliveryStatusID" class="form-control">
+            <option *ngFor="let status of deliveryStatuses" [value]="status.deliveryStatusID">{{ status.displayDesc }}</option>
+          </select>
+        </div>
+  
+        <!-- Delivery Type -->
+        <div class="form-group">
+          <label for="deliveryTypeID">Delivery Type</label>
+          <select id="deliveryTypeID" formControlName="deliveryTypeID" class="form-control">
+            <option *ngFor="let type of deliveryTypes" [value]="type.deliveryTypeID">{{ type.displayDesc }}</option>
+          </select>
+        </div>
+  
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" [disabled]="editOrderForm.invalid">Update Order</button>
+          <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

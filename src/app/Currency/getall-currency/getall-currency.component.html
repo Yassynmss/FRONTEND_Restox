@@ -1,1 +1,14 @@
-<p>getall-currency works!</p>
+<div class="currency-container">
+    <div class="currency-card" *ngFor="let currency of currencyList">
+      <div class="currency-details">
+        
+        <p><strong>Description:</strong> {{ currency.shortDescription }}</p>
+        <p><strong>Money Code:</strong> {{ currency.moneyCode }}</p>
+      </div>
+      <div class="currency-actions">
+        <button (click)="editCurrency(currency)" class="edit-button">Edit</button>
+        <button (click)="currency.currencyID !== undefined && deleteCurrency(currency.currencyID)" class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,49 @@
-<p>edit-combi works!</p>
+<div class="edit-combi-container">
+    <div class="form-wrapper">
+      <h2>Edit Combi</h2>
+  
+      <form [formGroup]="editCombiForm" (ngSubmit)="updateCombi()">
+  
+        <!-- Combi Code Field -->
+        <div class="form-group">
+          <label for="combiCode">Combi Code</label>
+          <input type="text" id="combiCode" formControlName="combiCode" class="form-control" />
+          <div *ngIf="editCombiForm.get('combiCode')?.invalid && editCombiForm.get('combiCode')?.touched" class="error">
+            Combi Code is required.
+          </div>
+        </div>
+  
+        <!-- Price Field -->
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" formControlName="price" class="form-control" />
+          <div *ngIf="editCombiForm.get('price')?.invalid && editCombiForm.get('price')?.touched" class="error">
+            Price must be a positive number.
+          </div>
+        </div>
+  
+        <!-- Discount Field -->
+        <div class="form-group">
+          <label for="discount">Discount</label>
+          <input type="number" id="discount" formControlName="discount" class="form-control" />
+          <div *ngIf="editCombiForm.get('discount')?.invalid && editCombiForm.get('discount')?.touched" class="error">
+            Discount must be a positive number.
+          </div>
+        </div>
+  
+        <!-- Display Price Field (Disabled) -->
+        <div class="form-group">
+          <label for="displayPrice">Display Price</label>
+          <input type="number" id="displayPrice" formControlName="displayPrice" class="form-control" [disabled]="true" />
+        </div>
+  
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" [disabled]="editCombiForm.invalid">Update Combi</button>
+          <button type="button" class="btn btn-secondary" (click)="navigateToAllCombis()">Cancel</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

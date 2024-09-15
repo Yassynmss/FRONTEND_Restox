@@ -1,0 +1,64 @@
+<div class="background">
+  <div class="form-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="pseudo">Pseudo</label>
+        <input id="pseudo" class="form-input" formControlName="pseudo">
+        <div *ngIf="registerForm.get('pseudo')?.invalid && registerForm.get('pseudo')?.touched" class="error-message">
+          Pseudo is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="organization">Organization</label>
+        <input id="organization" class="form-input" formControlName="organization">
+        <div *ngIf="registerForm.get('organization')?.invalid && registerForm.get('organization')?.touched" class="error-message">
+          Organization is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" class="form-input" formControlName="password">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input id="email" class="form-input" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+          Valid email is required.
+        </div>
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input id="phone" class="form-input" formControlName="phone">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('phone')?.touched" class="error-message">
+          Valid phone is required.
+        </div>
+      </div>
+      <div>
+        <label for="fullname">FullName</label>
+        <input id="fullname" class="form-input" formControlName="fullname">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('fullname')?.touched" class="error-message">
+          Valid fullname is required.
+        </div>
+      </div>
+      <div>
+        <label for="role">Role</label>
+        <select id="role" class="form-input" formControlName="role">
+          <option value="CUSTOMER">Customer</option>
+          <option value="RESTOWNER">Restaurant Owner</option>
+          <option value="USER">User</option>
+        </select>
+        <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">
+          Role is required.
+        </div>
+      </div>
+      
+      <button type="submit" class="form-button" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>
+</div>

@@ -11131,7 +11131,9 @@ a.text-dark:focus {
 }
 
 .fa-rotate-90 {
+  
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+
   transform: rotate(90deg);
 }
 
@@ -16765,8 +16767,9 @@ p.copy-footer-29 {
   margin: 5px 2px;
   background: #9c9898;
   display: block;
-  -webkit-backface-visibility: visible;
-  transition: opacity .2s ease;
+  -webkit-backface-visibility: visible; /* For Chrome, Safari */
+  backface-visibility: visible; /* Standard */
+    transition: opacity .2s ease;
   border-radius: 30px;
   position: relative;
 }

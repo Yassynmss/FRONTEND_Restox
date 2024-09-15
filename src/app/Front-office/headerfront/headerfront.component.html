@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg stroke">
           <h1>
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-              Bistros <i class="fa fa-cutlery ml-2" aria-hidden="true"></i>
+              Restox <i class="fa fa-cutlery ml-2" aria-hidden="true"></i>
             </a>
           </h1>
           <button class="navbar-toggler collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,23 +25,79 @@
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
+              <!-- Address -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Adress
+                  Addresses
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" [routerLink]="['/addadress']" routerLinkActive="router-link-active">Add adress</a>
-                  <a class="dropdown-item" [routerLink]="['/editadress']" routerLinkActive="router-link-active">Edit Adress</a>
-                  <a class="dropdown-item" [routerLink]="['/deleteadress']" routerLinkActive="router-link-active">Delete Adress</a>
-                </div>
+                  <a class="dropdown-item" [routerLink]="['/addadress']" routerLinkActive="router-link-active">Add address</a>
+                  <a class="dropdown-item" href="#address-section">My addresses</a>
+               </div>
               </li>
+                 <!-- Combi -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Combis
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/addcombi']" routerLinkActive="router-link-active">Add Combi</a>
+                    <a class="dropdown-item" [routerLink]="['/allcombi']">My Combis</a>
+                 </div>
+                </li>
+                 <!-- Order -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Orders
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/addorder']" routerLinkActive="router-link-active">Add Order</a>
+                    <a class="dropdown-item" [routerLink]="['/allorder']">My Orders</a>
+                 </div>
+                </li>
+                 <!-- Currency -->
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Currencies
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/addcurrency']" routerLinkActive="router-link-active">Add Currency</a>
+                    <a class="dropdown-item" [routerLink]="['/getallcurrency']">My Currencies</a>
+                 </div>
+                </li>
+                                 <!-- Regrouper Items, Item Details, et Item Prices sous un seul champ -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownItems" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Items
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownItems">
+    <!-- Lien pour les Items -->
+    <a class="dropdown-item" [routerLink]="['/additem']" routerLinkActive="router-link-active">Add Items</a>
+    <a class="dropdown-item" href="#items-section">My Items</a>
+    
+    <!-- Lien pour Item Details -->
+    <div class="dropdown-divider"></div> <!-- Ligne de séparation entre sections -->
+    <a class="dropdown-item" [routerLink]="['/additemdetail']" routerLinkActive="router-link-active">Add Item Details</a>
+    <a class="dropdown-item" [routerLink]="['/allitemdetail']">My Item Details</a>
+    
+    <!-- Lien pour Item Prices -->
+    <div class="dropdown-divider"></div> <!-- Ligne de séparation entre sections -->
+    <a class="dropdown-item" [routerLink]="['/additemprice']" routerLinkActive="router-link-active">Add Item Prices</a>
+    <a class="dropdown-item" [routerLink]="['/allitemprice']">My Item Prices</a>
+  </div>
+</li>
+
+
               <!-- Boutons Login et Sign Up -->
-              <li class="nav-item">
-                <a class="nav-link btn btn-style-white btn-style-border ml-lg-2" href="login.html">Login</a>
+              <li class="nav-item" *ngIf="!bizaccountservice.getLoginStatus()">
+                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link btn btn-style-white btn-style-border ml-lg-2" href="signup.html">Sign Up</a>
+              <li class="nav-item" *ngIf="!bizaccountservice.getLoginStatus()">
+                <a class="nav-link" [routerLink]="['/register']" routerLinkActive="router-link-active">Sign Up</a>
               </li>
+              <li class="nav-item" *ngIf="bizaccountservice.getLoginStatus()">
+                <a class="nav-link" href="#" (click)="logout()">Logout</a>
+              </li>              
               <!-- search button -->
               <div class="search-right">
                 <form action="#search" method="GET" class="search-box position-relative">

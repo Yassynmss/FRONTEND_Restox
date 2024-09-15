@@ -1,1 +1,41 @@
-<p>add-combi works!</p>
+<div class="background"> <!-- Ajout de la classe 'background' pour le conteneur -->
+    <div class="form-container">
+        <form [formGroup]="combiForm" (ngSubmit)="onSubmit()">
+      
+          <!--<div class="form-group">
+            <label for="pageID">Page ID:</label>
+            <input type="number" id="pageID" formControlName="pageID" class="form-input"> 
+          </div>-->
+          <div class="form-group">
+            <label for="pageID">Page Order:</label>
+            <select id="pageID" formControlName="pageID" class="form-input">
+              <option *ngFor="let page of menuPages" [value]="page.menuPageID">{{ page.pageOrder }}</option>
+            </select>
+          </div>
+    
+      
+          <div class="form-group">
+            <label for="combiCode">Combi Code:</label>
+            <input type="text" id="combiCode" formControlName="combiCode" class="form-input"> 
+          </div>
+      
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" formControlName="price" class="form-input"> 
+          </div>
+      
+          <div class="form-group">
+            <label for="discount">Discount (%):</label>
+            <input type="number" id="discount" formControlName="discount" class="form-input"> 
+          </div>
+      
+          <div class="form-group">
+            <label for="displayPrice">Display Price:</label>
+            <input [formControlName]="'displayPrice'" [disabled]="true" class="form-input"> 
+          </div>
+      
+          <button type="submit" class="form-button">Add Combi</button>
+        </form>
+    </div>
+  </div>
+  

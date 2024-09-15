@@ -1,16 +1,71 @@
+/* Style pour le conteneur de fond */
+.background {
+  background-color: #2c2c2c; /* Gris foncé */
+  height: 100vh; /* Hauteur complète de la fenêtre */
+  width: 100vw; /* Largeur complète de la fenêtre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2cm; /* Espace autour du conteneur */
+  box-sizing: border-box;
+}
+
+/* Style pour le conteneur du formulaire */
 .form-container {
-    background-color: black;
-    padding: 20px;
-    margin-top: 150px; /* Ajustez cette valeur pour ajouter plus d'espace en haut */
-  }
-  
-  .form-control {
-    background-color: white;
-    color: black;
-  }
-  
-  button[type="submit"] {
-    background-color: #dc3545; /* Rouge Bootstrap par défaut */
-    color: white;
-  }
-  
+  background-color: #ffffff; /* Fond blanc pour le formulaire */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Style des labels */
+label {
+  color: #ff8000; /* Orange */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style des champs de saisie */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Fond clair pour les champs */
+}
+
+.form-input:focus {
+  border-color: #ff8000; /* Bordure orange lors du focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
+}
+
+/* Style pour le bouton de soumission */
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff8000; /* Orange */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover:not(:disabled) {
+  background-color: #e67300; /* Orange plus foncé au survol */
+}
+
+.form-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

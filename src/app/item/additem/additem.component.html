@@ -1,1 +1,37 @@
-<p>additem works!</p>
+<div class="background"> 
+    <div class="form-container">
+      <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="itemOrder">Item Order:</label>
+          <input type="number" id="itemOrder" formControlName="itemOrder" class="form-input">
+        </div>
+  
+        <div class="form-group">
+          <label for="shortDescription">Short Description:</label>
+          <input type="text" id="shortDescription" formControlName="shortDescription" class="form-input">
+        </div>
+  
+        <div class="form-group">
+          <label for="animationUrl">Animation URL:</label>
+          <input type="text" id="animationUrl" formControlName="animationUrl" class="form-input">
+        </div>
+  
+        <div class="form-group">
+          <label for="pageID">Page ID:</label>
+          <select id="pageID" formControlName="pageID" class="form-input">
+            <option *ngFor="let page of menuPages" [value]="page.menuPageID">{{ page.pageOrder }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="combiID">Combi ID:</label>
+          <select id="combiID" formControlName="combiID" class="form-input">
+            <option *ngFor="let combi of combiList" [value]="combi.combiID">{{ combi.combiID }}</option>
+          </select>
+        </div>
+  
+        <button type="submit" class="form-button">Add Item</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,10 @@
+.address-sec i {
+    font-size: 1rem; /* Taille de l'icône */
+}
+
+.address-sec h6 {
+    font-size: 1rem; /* Taille du texte */
+}
+.fa-map-marker {
+    font-size: 1.75rem; /* Augmentez cette valeur pour une icône plus grande */
+}

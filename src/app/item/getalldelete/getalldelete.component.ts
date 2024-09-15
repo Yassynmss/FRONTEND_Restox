@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './getalldelete.component.html',
-  styleUrl: './getalldelete.component.css'
+  styleUrls: ['./getalldelete.component.css']
 })
 export class GetalldeleteComponent {
 

@@ -1,1 +1,14 @@
-<p>getall-order works!</p>
+<div class="order-container">
+    <div class="order-card" *ngFor="let order of orderList">
+        <div class="order-details">
+            <p><strong>Payment Method:</strong> {{ order.paymentMethod }}</p>
+            <p><strong>Order Date:</strong> {{ order.orderDate | date }}</p>
+            <p><strong>Payment Status:</strong> {{ order.paymentStatus }}</p>
+            <p><strong>Delivery Status:</strong> {{ order.deliveryStatusID }}</p>
+        </div>
+        <div class="order-actions">
+            <button (click)="editOrder(order)" class="edit-button">Edit</button>
+            <button (click)="order.orderID !== undefined && deleteOrder(order.orderID)" class="delete-button">Delete</button>
+        </div>
+    </div>
+</div>

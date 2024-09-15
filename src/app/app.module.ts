@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AddBizAccountComponent } from './BizAccount/add-biz-account/add-biz-account.component';
+import { RegisterComponent } from './authorize/register/register.component';
+import { LoginComponent } from './authorize/login/login.component';
+import { AddCombiComponent } from './combi/add-combi/add-combi.component';
+import { AdditemComponent } from './item/additem/additem.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { QRCodeModule } from 'angularx-qrcode';
+import { AddCurrencyComponent } from './Currency/add-currency/add-currency.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +49,11 @@ import { AddBizAccountComponent } from './BizAccount/add-biz-account/add-biz-acc
     HomeComponent,
     AddAdressComponent,
     EditAdressComponent,
-    AddBizAccountComponent
-    
+    AddBizAccountComponent,
+    RegisterComponent,
+    LoginComponent,
+    AddCombiComponent,
+    AddCurrencyComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +67,11 @@ import { AddBizAccountComponent } from './BizAccount/add-biz-account/add-biz-acc
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

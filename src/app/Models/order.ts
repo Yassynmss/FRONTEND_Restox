@@ -8,18 +8,17 @@ import { OrderDetail } from "./OrderDetail";
 export interface Order {
     orderID?: number;
     customerID?: number;
-    bizAccountID?: number;
+    ApplicationUserId?: number;
     orderDate?: Date;
-    paymentMethodID?: number;
     paymentStatus?: string;
     deliveryStatusID?: number;
     deliveryTypeID?: number;
     datCrea?: Date;
     datUpt?: Date;
-    customer?: Customer; // Assure-toi de définir également l'interface Customer
-    bizAccount?: BizAccount; // Assure-toi de définir également l'interface BizAccount
-    deliveryStatus?: DeliveryStatus; // Assure-toi de définir également l'interface DeliveryStatus
-    deliveryType?: DeliveryType; // Assure-toi de définir également l'interface DeliveryType
-    orderDetails?: OrderDetail[]; // Assure-toi de définir également l'interface OrderDetail
-    customerReview?: CustomerReview; // Assure-toi de définir également l'interface CustomerReview
+    customer?: Customer; 
+    bizAccount?: BizAccount; 
+    deliveryStatus?: DeliveryStatus; 
+    deliveryType?: DeliveryType; 
+    orderDetails?: OrderDetail[];
+    customerReview?: CustomerReview; 
   }

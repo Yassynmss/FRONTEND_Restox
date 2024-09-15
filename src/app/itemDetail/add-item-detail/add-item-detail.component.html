@@ -1,1 +1,48 @@
-<p>add-item-detail works!</p>
+<div class="background">
+  <div class="form-container">
+    <h2 style="text-align: center; color: #ff8000;">Add Item Detail</h2>
+
+    <form [formGroup]="addItemDetailForm" (ngSubmit)="addItemDetail()">
+
+      <!-- Page Order (MenuPage) Selection -->
+      <div class="form-group">
+        <label for="itemID">Page Order</label>
+        <select id="itemID" formControlName="itemID" class="form-input">
+          <option *ngFor="let item of MenuPage" [value]="item.menuPageID">{{ item.pageOrder }}</option>
+        </select>
+      </div>
+
+      <!-- Short Description (Language) Selection -->
+      <div class="form-group">
+        <label for="languageID">Short Description</label>
+        <select id="languageID" formControlName="languageID" class="form-input">
+          <option *ngFor="let language of Language" [value]="language.languageID">{{ language.shortDescription }}</option>
+        </select>
+      </div>
+
+      <!-- Description Field -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-input"></textarea>
+        <div *ngIf="addItemDetailForm.get('description')?.invalid && addItemDetailForm.get('description')?.touched" class="error">
+          Description is required.
+        </div>
+      </div>
+
+      <!-- HTML Description Field -->
+      <div class="form-group">
+        <label for="htmlDescription">HTML Description</label>
+        <textarea id="htmlDescription" formControlName="htmlDescription" class="form-input"></textarea>
+        <div *ngIf="addItemDetailForm.get('htmlDescription')?.invalid && addItemDetailForm.get('htmlDescription')?.touched" class="error">
+          HTML Description is required.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="form-button" [disabled]="addItemDetailForm.invalid">Add Item Detail</button>
+      
+      <!-- Cancel Button -->
+      <button type="button" class="form-button" style="background-color: #6c757d;" (click)="navigateToItemDetailsList()">Cancel</button>
+    </form>
+  </div>
+</div>

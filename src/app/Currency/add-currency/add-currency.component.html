@@ -1,1 +1,27 @@
-<p>add-currency works!</p>
+<div class="background">
+    <div class="form-container">
+      <form [formGroup]="currencyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="shortDescription">Short Description:</label>
+          <input id="shortDescription" formControlName="shortDescription" type="text" class="form-input">
+          <div *ngIf="currencyForm.get('shortDescription')?.invalid && currencyForm.get('shortDescription')?.touched">
+            Short Description is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="moneyCode">Money Code:</label>
+          <select id="moneyCode" formControlName="moneyCode" class="form-input">
+            <option value="" disabled>Select a currency</option>
+            <option *ngFor="let code of moneyCodes" [value]="code">{{ code }}</option>
+          </select>
+          <div *ngIf="currencyForm.get('moneyCode')?.invalid && currencyForm.get('moneyCode')?.touched">
+            Money Code is required.
+          </div>
+        </div>
+  
+        <button type="submit" class="form-button" [disabled]="currencyForm.invalid">Add Currency</button>
+      </form>
+    </div>
+  </div>
+  

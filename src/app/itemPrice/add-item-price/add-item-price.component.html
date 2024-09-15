@@ -1,1 +1,58 @@
-<p>add-item-price works!</p>
+<div class="background">
+  <div class="form-container">
+    <h2>Add Item Price</h2>
+    <form [formGroup]="addItemPriceForm" (ngSubmit)="addItemPrice()">
+
+      <!-- Currency Selection -->
+      <div class="form-group">
+        <label for="currencyID">Currency</label>
+        <select id="currencyID" formControlName="currencyID" class="form-input">
+          <option *ngFor="let currency of currencies" [value]="currency.currencyID">
+            {{ currency.shortDescription }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Item Selection -->
+      <div class="form-group">
+        <label for="itemID">Item</label>
+        <select id="itemID" formControlName="itemID" class="form-input">
+          <option *ngFor="let item of items" [value]="item.itemID">
+            {{ item.animationUrl }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Price Field -->
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" type="number" formControlName="price" class="form-input">
+      </div>
+
+      <!-- Discount Field -->
+      <div class="form-group">
+        <label for="discount">Discount</label>
+        <input id="discount" type="number" formControlName="discount" class="form-input">
+      </div>
+
+      <!-- Display Price Field -->
+      <div class="form-group">
+        <label for="displayPrice">Display Price:</label>
+        <input formControlName="displayPrice" [disabled]="true" class="form-input"> 
+      </div>
+
+      <!-- Submit Button -->
+      <div class="button-group">
+        <button type="submit" class="form-button" [disabled]="addItemPriceForm.invalid">
+          Add Item Price
+        </button>
+
+        <!-- Cancel Button -->
+        <button type="button" class="form-button cancel-button" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

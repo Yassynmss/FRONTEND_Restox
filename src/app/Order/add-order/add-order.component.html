@@ -1,1 +1,72 @@
-<p>add-order works!</p>
+<div class="background">
+  <div class="form-container">
+    <h2>Add Order</h2>
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      
+      <div class="form-row">
+        <!-- Customer Selection -->
+        <div class="form-group">
+          <label for="ApplicationUserId">Customer:</label>
+          <select id="ApplicationUserId" formControlName="applicationUserId" class="form-input">
+            <option value="" disabled selected>-- Select Customer --</option>
+            <option *ngFor="let bizaccount of bizaccounts" [value]="bizaccount.id">{{ bizaccount.fullName }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="orderDate">Order Date:</label>
+          <input type="datetime-local" id="orderDate" formControlName="orderDate" class="form-input">
+        </div>
+        
+
+        <!-- Payment Method -->
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method:</label>
+          <select id="paymentMethod" formControlName="paymentMethod" class="form-input">
+            <option value="" disabled selected>-- Select Payment Method --</option>
+            <option *ngFor="let method of paymentMethods" [value]="method.id">{{ method.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- Payment Status -->
+        <div class="form-group">
+          <label for="paymentStatus">Payment Status:</label>
+          <select id="paymentStatus" formControlName="paymentStatus" class="form-input">
+            <option value="" disabled selected>-- Select Payment Status --</option>
+            <option *ngFor="let status of paymentStatusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+
+        <!-- Delivery Status -->
+        <div class="form-group">
+          <label for="deliveryStatusID">Delivery Status:</label>
+          <select id="deliveryStatusID" formControlName="deliveryStatusID" class="form-input">
+            <option value="" disabled selected>-- Select Delivery Status --</option>
+            <option *ngFor="let status of deliveryStatuses" [value]="status.deliveryStatusID">{{ status.displayDesc }}</option>
+          </select>
+        </div>
+
+        <!-- Delivery Type -->
+        <div class="form-group">
+          <label for="deliveryTypeID">Delivery Type:</label>
+          <select id="deliveryTypeID" formControlName="deliveryTypeID" class="form-input">
+            <option value="" disabled selected>-- Select Delivery Type --</option>
+            <option *ngFor="let type of deliveryTypes" [value]="type.deliveryTypeID">{{ type.displayDesc }}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Submit and Cancel Buttons -->
+      <div class="button-group">
+        <button type="submit" class="form-button" [disabled]="orderForm.invalid">
+          Add Order
+        </button>
+        <button type="button" class="form-button cancel-button" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

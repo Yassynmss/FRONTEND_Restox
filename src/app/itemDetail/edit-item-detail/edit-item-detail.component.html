@@ -1,1 +1,50 @@
-<p>edit-item-detail works!</p>
+<div class="edit-item-detail-container">
+    <div class="form-wrapper">
+      <h2>Edit Item Detail</h2>
+  
+      <form [formGroup]="editItemDetailForm" (ngSubmit)="updateItemDetail()">
+  
+        <!-- Page Order Selection -->
+        <div class="form-group">
+          <label for="itemID">Page Order</label>
+          <select id="itemID" formControlName="itemID" class="form-control">
+            <option *ngFor="let item of MenuPage" [value]="item.menuPageID">{{ item.pageOrder }}</option>
+          </select>
+        </div>
+  
+        <!-- Short Description Selection -->
+        <div class="form-group">
+          <label for="languageID">Short Description</label>
+          <select id="languageID" formControlName="languageID" class="form-control">
+            <option *ngFor="let language of Language" [value]="language.languageID">{{ language.shortDescription }}</option>
+          </select>
+        </div>
+  
+        <!-- Description Field -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" class="form-control"></textarea>
+          <div *ngIf="editItemDetailForm.get('description')?.invalid && editItemDetailForm.get('description')?.touched" class="error">
+            Description is required.
+          </div>
+        </div>
+  
+        <!-- HTML Description Field -->
+        <div class="form-group">
+          <label for="htmlDescription">HTML Description</label>
+          <textarea id="htmlDescription" formControlName="htmlDescription" class="form-control"></textarea>
+          <div *ngIf="editItemDetailForm.get('htmlDescription')?.invalid && editItemDetailForm.get('htmlDescription')?.touched" class="error">
+            HTML Description is required.
+          </div>
+        </div>
+  
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" [disabled]="editItemDetailForm.invalid">Update Item Detail</button>
+          <button type="button" class="btn btn-secondary" (click)="navigateToItemDetailsList()">Cancel</button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

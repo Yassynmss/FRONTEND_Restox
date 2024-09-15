@@ -15,3 +15,17 @@
     font-size: 0.875rem; /* Réduit la taille du bouton */
     font-weight: 600; /* Améliore la lisibilité */
 }
+
+
+
+
+
+.menu-sec .btn {
+    margin-right: 10px; /* Adjust the right margin if needed */
+}
+
+.menu-item-price-home h6 {
+    margin-bottom: 0; /* Ensures the price and button are aligned vertically */
+}
+
+

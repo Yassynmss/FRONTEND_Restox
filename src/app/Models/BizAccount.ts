@@ -1,16 +1,24 @@
 import { adress } from "./adress";
 import { Order } from "./order";
+import { Role } from "./Role";
 
 export class BizAccount {
-    public bizAccountID?: number;
+    public ApplicationUserId?: string;
     public pseudo?: string;
     public organization?: string;
     public password?: string;
     public email?: string;
-    public datCrea?: Date;
-    public datUpt?: Date;
+    public datCrea?: String;
+    public datUpt?: String;
+    public fullName?: string;
+    public Phone?: number;
     public isVerified?: boolean;
     public isLocked?: boolean;
-    public adresses?: adress[]; // Correction : Remplacement de `adressID` par une liste d'adresses
-    public orders?: Order[];    // Décommenter si nécessaire
+    public adresses?: adress[]; 
+    public orders?: Order[];    
+    public Role?: Role;
+}
+export class login {
+    public pseudo?: string;
+    public password?: string;
 }

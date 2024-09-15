@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './delete-combi.component.html',
-  styleUrl: './delete-combi.component.css'
+  styleUrls: ['./delete-combi.component.css']
 })
 export class DeleteCombiComponent {
 
