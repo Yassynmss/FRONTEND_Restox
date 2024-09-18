@@ -1,1 +1,52 @@
-<p>add-order-detail works!</p>
+<div class="background">
+    <div class="form-container">
+      <h2>Add Order Detail</h2>
+      <form [formGroup]="orderDetailForm" (ngSubmit)="onSubmit()">
+  
+        <div class="form-row">
+          <!-- Order Selection -->
+          <div class="form-group">
+            <label for="orderID">Order:</label>
+            <select id="orderID" formControlName="orderID" class="form-input">
+              <option value="" disabled selected>-- Select Order --</option>
+              <option *ngFor="let order of orders" [value]="order.orderID">{{ order.orderDate }}</option>
+            </select>
+          </div>
+  
+          <!-- Item Selection -->
+          <div class="form-group">
+            <label for="itemID">Item:</label>
+            <select id="itemID" formControlName="itemID" class="form-input">
+              <option value="" disabled selected>-- Select Item --</option>
+              <option *ngFor="let item of items" [value]="item.itemID">{{ item.shortDescription }}</option>
+            </select>
+          </div>
+  
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" formControlName="price" class="form-input" />
+          </div>
+        </div>
+  
+        <!-- Delivery Status -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="deliveryStatus">Delivery Status:</label>
+            <input type="text" id="deliveryStatus" formControlName="deliveryStatus" class="form-input" />
+          </div>
+        </div>
+  
+        <!-- Submit and Cancel Buttons -->
+        <div class="button-group">
+          <button type="submit" class="form-button" [disabled]="orderDetailForm.invalid">
+            Add Order Detail
+          </button>
+          <button type="button" class="form-button cancel-button" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

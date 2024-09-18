@@ -1,1 +1,51 @@
-<p>edit-order-detail works!</p>
+<div class="edit-order-detail-container">
+    <div class="form-wrapper">
+      <h2>Edit Order Detail</h2>
+  
+      <form [formGroup]="editOrderDetailForm" (ngSubmit)="updateOrderDetail()">
+  
+        <!-- Order ID Field -->
+        <div class="form-group">
+          <label for="orderID">Order ID</label>
+          <input type="number" id="orderID" formControlName="orderID" class="form-control" />
+          <div *ngIf="editOrderDetailForm.get('orderDate')?.invalid && editOrderDetailForm.get('orderDate')?.touched" class="error">
+            Order ID is required.
+          </div>
+        </div>
+  
+        <!-- Item ID Field -->
+        <div class="form-group">
+          <label for="itemID">Item ID</label>
+          <input type="number" id="itemID" formControlName="itemID" class="form-control" />
+          <div *ngIf="editOrderDetailForm.get('itemID')?.invalid && editOrderDetailForm.get('itemID')?.touched" class="error">
+            Item ID is required.
+          </div>
+        </div>
+  
+        <!-- Price Field -->
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" formControlName="price" class="form-control" />
+          <div *ngIf="editOrderDetailForm.get('price')?.invalid && editOrderDetailForm.get('price')?.touched" class="error">
+            Price is required and must be positive.
+          </div>
+        </div>
+  
+        <!-- Delivery Status Field -->
+        <div class="form-group">
+          <label for="deliveryStatus">Delivery Status</label>
+          <input type="text" id="deliveryStatus" formControlName="deliveryStatus" class="form-control" />
+          <div *ngIf="editOrderDetailForm.get('deliveryStatus')?.invalid && editOrderDetailForm.get('deliveryStatus')?.touched" class="error">
+            Delivery Status is required.
+          </div>
+        </div>
+  
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" [disabled]="editOrderDetailForm.invalid">Update Order Detail</button>
+          <button type="button" class="btn btn-secondary" (click)="navigateToOrderDetailList()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

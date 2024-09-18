@@ -19,9 +19,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="about.html">About Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="menu.html">Menu</a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
@@ -45,24 +43,24 @@
                     <a class="dropdown-item" [routerLink]="['/allcombi']">My Combis</a>
                  </div>
                 </li>
-                 <!-- Order -->
+                  <!-- Address -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Addresses
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/addadress']" routerLinkActive="router-link-active">Add address</a>
+                  <a class="dropdown-item" href="#address-section">My addresses</a>
+               </div>
+              </li>
+                 <!-- Menu -->
                  <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Orders
+                    Menu
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/addorder']" routerLinkActive="router-link-active">Add Order</a>
-                    <a class="dropdown-item" [routerLink]="['/allorder']">My Orders</a>
-                 </div>
-                </li>
-                 <!-- Currency -->
-                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Currencies
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/addcurrency']" routerLinkActive="router-link-active">Add Currency</a>
-                    <a class="dropdown-item" [routerLink]="['/getallcurrency']">My Currencies</a>
+                    <a class="dropdown-item" [routerLink]="['/addmenu']" routerLinkActive="router-link-active">Add Menu</a>
+                    <a class="dropdown-item" [routerLink]="['/allmenu']">My Menu</a>
                  </div>
                 </li>
                                  <!-- Regrouper Items, Item Details, et Item Prices sous un seul champ -->
@@ -86,7 +84,22 @@
     <a class="dropdown-item" [routerLink]="['/allitemprice']">My Item Prices</a>
   </div>
 </li>
-
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownItems" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Orders
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownItems">
+    <!-- Lien pour les Items -->
+    <a class="dropdown-item" [routerLink]="['/addorder']" routerLinkActive="router-link-active">Add Order</a>
+    <a class="dropdown-item" [routerLink]="['/allorder']">My Orders</a>    
+    <!-- Lien pour Item Details -->
+    <div class="dropdown-divider"></div> <!-- Ligne de séparation entre sections -->
+    <a class="dropdown-item" [routerLink]="['/addorderdetail']" routerLinkActive="router-link-active">Add Order Details</a>
+    <a class="dropdown-item" [routerLink]="['/allorderdetails']">My Order Details</a>
+    
+  
+  </div>
+</li>
 
               <!-- Boutons Login et Sign Up -->
               <li class="nav-item" *ngIf="!bizaccountservice.getLoginStatus()">

@@ -1,1 +1,15 @@
-<p>getall-order-detail works!</p>
+<div class="order-detail-container">
+    <div class="order-detail-card" *ngFor="let orderDetail of orderDetailList">
+      <div class="order-detail-details">
+        <p><strong>Order ID:</strong> {{ orderDetail.orderID }}</p>
+        <p><strong>Item ID:</strong> {{ orderDetail.itemID }}</p>
+        <p><strong>Price:</strong> {{ orderDetail.price | currency }}</p>
+        <p><strong>Delivery Status:</strong> {{ orderDetail.deliveryStatus }}</p>
+      </div>
+      <div class="order-detail-actions">
+        <button (click)="editOrderDetail(orderDetail)" class="edit-button">Edit</button>
+        <button (click)="orderDetail.orderDetailID !== undefined && deleteOrderDetail(orderDetail.orderDetailID)" class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
+  

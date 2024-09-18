@@ -26,6 +26,13 @@ import { EditItemPriceComponent } from './itemPrice/edit-item-price/edit-item-pr
 import { AddOrderComponent } from './Order/add-order/add-order.component';
 import { GetallOrderComponent } from './Order/getall-order/getall-order.component';
 import { EditOrderComponent } from './Order/edit-order/edit-order.component';
+import { AddOrderDetailComponent } from './OrderDetail/add-order-detail/add-order-detail.component';
+import { GetallOrderDetailComponent } from './OrderDetail/getall-order-detail/getall-order-detail.component';
+import { EditOrderDetailComponent } from './OrderDetail/edit-order-detail/edit-order-detail.component';
+import { AddMenuComponent } from './Menu/add-menu/add-menu.component';
+import { GetallMenuComponent } from './Menu/getall-menu/getall-menu.component';
+import { EditMenuComponent } from './Menu/edit-menu/edit-menu.component';
+import { AddMenuPageComponent } from './MenuPage/add-menu-page/add-menu-page.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -53,7 +60,15 @@ const routes: Routes = [
   { path: 'edititemprice/:id', component: EditItemPriceComponent },
   {path:'addorder', component:AddOrderComponent},
   {path:'allorder' , component:GetallOrderComponent},
-  {path:'editorder/:id', component:EditOrderComponent}
+  {path:'editorder/:id', component:EditOrderComponent},
+  {path:'addorderdetail' , component:AddOrderDetailComponent},
+  {path:'allorderdetails',component:GetallOrderDetailComponent},
+  {path:'editorderdetail/:id', component:EditOrderDetailComponent},
+  {path:'addmenu' , component:AddMenuComponent},
+  {path:'allmenu' , component:GetallMenuComponent},
+  {path:'editmenu/:id' , component:EditMenuComponent},
+  {path:'addmenupage', component:AddMenuPageComponent},
+ // {path:'menuu', component:MenuuComponent}
 
 ];
 

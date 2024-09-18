@@ -16,12 +16,14 @@ import { DeliveryType } from '../Models/DeliveryType';
 import { DeliveryStatus } from '../Models/DeliveryStatus';
 import { Customer } from '../Models/customer';
 import { Role } from '../Models/Role';
+import { OrderDetail } from '../Models/OrderDetail';
+import { Menu } from '../Models/Menu';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CRUDService {
-  private baseUrl: string = 'https://localhost:7176/api'; // Correction de l'URL
+  private baseUrl: string = 'https://localhost:7176/api'; 
 
   private addressSubject = new BehaviorSubject<string>("10001 Alleghany st, 5th Avenue, 235 Terry, London");
   currentAddress = this.addressSubject.asObservable();
@@ -69,6 +71,12 @@ export class CRUDService {
       catchError(this.handleError) // Gestion des erreurs
     );
   }
+  deleteOrderDetail(id:number): Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}/OrderDetail/${id}`)
+    .pipe(
+      catchError(this.handleError) // Gestion des erreurs
+    );
+  }
   deleteItemPrice(id:number): Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/ItemPrice/${id}`)
     .pipe(
@@ -81,24 +89,38 @@ export class CRUDService {
       catchError(this.handleError) 
     );
   }
+  deleteMenu(id:number): Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}/Menu/${id}`)
+    .pipe(
+      catchError(this.handleError) 
+    );
+  }
   getAdresses(): Observable<adress[]> {
     return this.http.get<adress[]>(`${this.baseUrl}/Adress`);
   }
   getAllCombis(): Observable<Combi[]>{
     return this.http.get<Combi[]>(`${this.baseUrl}/Combi`);
   }
-
+  getOrders(): Observable<Order[]>{
+    return this.http.get<Order[]>(`${this.baseUrl}/Order`);
+  }
   changeAddress(address: string) {
     this.addressSubject.next(address);
   }
-
+  getAllMenus(): Observable<Menu[]>{
+    return this.http.get<Menu[]>(`${this.baseUrl}/Menu/get-all-menus`);
+  }
   // Fonction de gestion des erreurs
   private handleError(error: any) {
     console.error('Une erreur est survenue :', error);
     return throwError(error.message || 'Erreur serveur');
   }
-
-
+  getMenuById(id: number): Observable<Menu> {
+    return this.http.get<Menu>(`${this.baseUrl}/Menu/get-menu/${id}`);
+  }
+  getOrderDetailById(id: number): Observable<OrderDetail> {
+    return this.http.get<OrderDetail>(`${this.baseUrl}/OrderDetail/${id}`);
+  }
   getAdressById(id: number): Observable<adress> {
     return this.http.get<adress>(`${this.baseUrl}/Adress/${id}`);
   }
@@ -120,6 +142,20 @@ export class CRUDService {
   }
   updateOrder(order: Order): Observable<Order> {
     return this.http.put<Order>(`${this.baseUrl}/Order/${order.orderID}`, order, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  updateMenu(menu: Menu): Observable<Menu> {
+    return this.http.put<Menu>(`${this.baseUrl}/Menu/${menu.menuID}`, menu, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  updateOrderDetail(order: OrderDetail): Observable<OrderDetail> {
+    return this.http.put<OrderDetail>(`${this.baseUrl}/OrderDetail/${order.orderDetailID}`, order, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -166,7 +202,9 @@ export class CRUDService {
   }
 
 
-
+  getMenus(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/Menu`);
+  }
 
 
   getCombiList(): Observable<any[]> {
@@ -200,7 +238,9 @@ export class CRUDService {
   addCombi(combi: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/combi`, combi);
 }
-
+addMenuPage(menupage: any):Observable<any>{
+  return this.http.post(`${this.baseUrl}/MenuPage`, menupage);
+}
 addItem(item: any):Observable<any>{
   return this.http.post(`${this.baseUrl}/item`, item);
 }
@@ -213,11 +253,15 @@ addItemDetail(itemDetail : any):Observable<any>{
 addItemPrice(itemPrice : any):Observable<any>{
   return this.http.post(`${this.baseUrl}/ItemPrice`, itemPrice);
 }
-
+addMenu(Menu : any):Observable<any>{
+  return this.http.post(`${this.baseUrl}/Menu`, Menu);
+}
 getAllMenuPage(): Observable<MenuPage[]> {
   return this.http.get<MenuPage[]>(`${this.baseUrl}/MenuPage`);
 }
-
+getAllOrderDetails(): Observable<OrderDetail[]> {
+  return this.http.get<OrderDetail[]>(`${this.baseUrl}/OrderDetail`);
+}
 // Method to get all languages
 getAllLanguages(): Observable<Language[]> {
   return this.http.get<Language[]>(`${this.baseUrl}/Language`);
@@ -243,6 +287,12 @@ getCustomer(): Observable<any[]> {
       catchError(this.handleError)
     );
 }
+getRESTOCHEF(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrl}/auth/restochefs`)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
 
 
 
@@ -261,6 +311,9 @@ getCustomer(): Observable<any[]> {
 // Méthode pour ajouter une commande
 addOrder(order: Order): Observable<Order> {
   return this.http.post<Order>(`${this.baseUrl}/Order`, order);
+}
+addOrderDetail(order: OrderDetail): Observable<OrderDetail> {
+  return this.http.post<OrderDetail>(`${this.baseUrl}/OrderDetail`, order);
 }
 
 // Récupération des données automatiquement

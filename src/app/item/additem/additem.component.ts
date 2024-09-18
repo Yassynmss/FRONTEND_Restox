@@ -13,7 +13,7 @@ import { CRUDService } from 'src/app/Services/crud.service';
 export class AdditemComponent implements OnInit {
   itemForm: FormGroup;
   menuPages: any[] = []; 
-  combiList: any[] = []; // Liste pour stocker les combinaisons
+  combiList: any[] = []; 
 
   constructor(private fb: FormBuilder, private crudService: CRUDService) {
     this.itemForm = this.fb.group({
@@ -21,19 +21,19 @@ export class AdditemComponent implements OnInit {
       itemOrder: [null, [Validators.required, Validators.min(1)]],
       animationUrl: ['', Validators.required],
       pageID: [null, Validators.required],
-      combiID: [null, Validators.required] // Utiliser un nom unique
+      combiID: [null, Validators.required] 
     });
   }
 
   ngOnInit() {
     this.getMenuPages();
-    this.getCombiList(); // Récupérer les combinaisons disponibles
+    this.getCombiList();
   }
 
   getMenuPages() {
     this.crudService.getMenuPages().subscribe(
       data => {
-        this.menuPages = data; // Stocker les pages récupérées
+        this.menuPages = data; 
       },
       error => {
         console.error('Error fetching menu pages', error);
@@ -44,7 +44,7 @@ export class AdditemComponent implements OnInit {
   getCombiList() {
     this.crudService.getCombiList().subscribe(
       data => {
-        this.combiList = data; // Stocker les combinaisons récupérées
+        this.combiList = data; 
       },
       error => {
         console.error('Error fetching combi list', error);

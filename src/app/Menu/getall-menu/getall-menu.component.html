@@ -1,1 +1,14 @@
-<p>getall-menu works!</p>
+<div class="menu-container">
+    <div class="menu-card" *ngFor="let menu of menuList">
+      <div class="menu-details">
+        <p><strong>Description:</strong>  {{ menu.title }}</p>
+        <p><strong>Description:</strong> {{ menu.htmlDescription }}</p>
+        <p><strong>Chef:</strong> {{ menu.applicationUserFullName }}</p> 
+      </div>
+      <div class="menu-actions">
+        <button (click)="editMenu(menu)" class="edit-button">Edit</button>
+        <button (click)="menu.menuID !== undefined && deleteMenu(menu.menuID)" class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
+  

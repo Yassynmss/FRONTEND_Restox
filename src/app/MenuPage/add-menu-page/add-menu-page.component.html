@@ -1,1 +1,52 @@
-<p>add-menu-page works!</p>
+<div class="background">
+    <div class="form-container">
+      <h2>Add Menu Page</h2>
+      <form [formGroup]="addMenuPageForm" (ngSubmit)="addMenuPage()">
+  
+        <!-- Short Description Field -->
+        <div class="form-group">
+          <label for="shortDescription">Short Description</label>
+          <input id="shortDescription" type="text" formControlName="shortDescription" class="form-input">
+        </div>
+  
+        <!-- HTML Description Field -->
+        <div class="form-group">
+          <label for="htmlDescription">HTML Description</label>
+          <textarea id="htmlDescription" formControlName="htmlDescription" class="form-input"></textarea>
+        </div>
+  
+        <!-- Page Order Field -->
+        <div class="form-group">
+          <label for="pageOrder">Page Order</label>
+          <input id="pageOrder" type="text" formControlName="pageOrder" class="form-input">
+        </div>
+  
+        <!-- Animation URL Field -->
+        <div class="form-group">
+          <label for="animationUrl">Animation URL (Optional)</label>
+          <input id="animationUrl" type="text" formControlName="animationUrl" class="form-input">
+        </div>
+  
+        <!-- Menu Selection -->
+        <div class="form-group">
+          <label for="menuID">Menu</label>
+          <select id="menuID" formControlName="menuID" class="form-input">
+            <option value="" disabled selected>-- Select Menu --</option>
+            <option *ngFor="let menu of menus" [value]="menu.menuID">{{ menu.title }}</option>
+          </select>
+        </div>
+        
+  
+        <!-- Submit and Cancel Buttons -->
+        <div class="button-group">
+          <button type="submit" class="form-button" [disabled]="addMenuPageForm.invalid">
+            Add Menu Page
+          </button>
+          <button type="button" class="form-button cancel-button" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

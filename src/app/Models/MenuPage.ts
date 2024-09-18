@@ -9,7 +9,7 @@ export interface MenuPage {
     pageOrder?: string;
     animationUrl?: string;
     menuID?: number;
-    menu?: Menu; // Assure-toi de définir également l'interface Menu
-    items?: Item[]; // Assure-toi de définir également l'interface Item
-    combis?: Combi[]; // Assure-toi de définir également l'interface Combi
+    menu?: Menu; 
+    items?: Item[]; 
+    combis?: Combi[]; 
   }

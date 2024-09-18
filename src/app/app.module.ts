@@ -53,7 +53,8 @@ import { AddCurrencyComponent } from './Currency/add-currency/add-currency.compo
     RegisterComponent,
     LoginComponent,
     AddCombiComponent,
-    AddCurrencyComponent
+    AddCurrencyComponent,
+    
   ],
   imports: [
     BrowserModule,

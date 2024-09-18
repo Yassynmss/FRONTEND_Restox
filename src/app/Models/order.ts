@@ -16,7 +16,6 @@ export interface Order {
     datCrea?: Date;
     datUpt?: Date;
     customer?: Customer; 
-    bizAccount?: BizAccount; 
     deliveryStatus?: DeliveryStatus; 
     deliveryType?: DeliveryType; 
     orderDetails?: OrderDetail[];

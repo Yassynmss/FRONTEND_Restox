@@ -1,1 +1,42 @@
-<p>add-menu works!</p>
+<div class="background">
+    <div class="form-container">
+      <h2>Add Menu</h2>
+      <form [formGroup]="addMenuForm" (ngSubmit)="addMenu()">
+  
+        <!-- Title Field -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" type="text" formControlName="title" class="form-input">
+        </div>
+  
+        <!-- Description Field -->
+        <div class="form-group">
+          <label for="htmlDescription">Description</label>
+          <textarea id="htmlDescription" formControlName="htmlDescription" class="form-input"></textarea>
+        </div>
+  
+           <!-- Customer Selection -->
+           <div class="form-group">
+            <label for="ApplicationUserId">Chef:</label>
+            <select id="ApplicationUserId" formControlName="applicationUserId" class="form-input">
+              <option value="" disabled selected>-- Select Chef --</option>
+              <option *ngFor="let bizaccount of bizaccounts" [value]="bizaccount.id">{{ bizaccount.fullName }}</option>
+            </select>
+          </div>
+  
+        <!-- Submit Button -->
+        <div class="button-group">
+          <button type="submit" class="form-button" [disabled]="addMenuForm.invalid">
+            Add Menu
+          </button>
+  
+          <!-- Cancel Button -->
+          <button type="button" class="form-button cancel-button" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

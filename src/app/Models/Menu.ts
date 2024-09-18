@@ -2,7 +2,7 @@ import { BizAccount } from "./BizAccount";
 import { MenuPage } from "./MenuPage";
 
 export interface Menu {
-    menuID?: number;
+  menuID?: number;
     title?: string;
     htmlDescription?: string;
     accountID?: number;
