@@ -3,7 +3,6 @@ import { Item } from "./item";
 
 export interface ItemPrice {
     itemPriceID?: number;
-    itemID?: number;
     currencyID?: number;
     price?: number; 
     discount?: number; 

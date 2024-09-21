@@ -17,8 +17,37 @@
         </div>
       </div>
 
+      <ngx-recaptcha2
+        [siteKey]="siteKey"
+        (reset)="handleReset()"
+        (expire)="handleExpire()"
+        (load)="handleLoad()"
+        (success)="handleSuccess($event)"
+        [useGlobalDomain]="false"
+        formControlName="recaptcha">
+      </ngx-recaptcha2>
+
       <button type="submit" [disabled]="loginForm.invalid" class="form-button">Login</button>
     </form>
   </div>
-
 </div>
+
+<style>
+/* Style pour le conteneur de fond */
+.background {
+  background-color: #2c2c2c; /* Gris foncé */
+  height: 100vh; /* Hauteur complète de la fenêtre */
+  width: 100vw; /* Largeur complète de la fenêtre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2cm; /* Espace autour du conteneur */
+  box-sizing: border-box;
+  background-image: url('assets/images/FastFoodd.jfif'); /* Image de fond */
+  background-size: cover; /* Ajuste l'image pour couvrir tout le fond */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Ne répète pas l'image */
+}
+
+/* Reste du style... */
+</style>

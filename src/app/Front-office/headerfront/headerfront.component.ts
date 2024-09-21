@@ -9,7 +9,7 @@ import { BizAccountService } from 'src/app/Services/biz-account.service';
   standalone: true,
   imports: [RouterModule, CommonModule], 
   templateUrl: './headerfront.component.html',
-  styleUrls: ['./headerfront.component.css']
+  styleUrls: ['../../../assets/css/style-starter.css']
 })
 export class HeaderfrontComponent {
   constructor(public bizaccountservice: BizAccountService) {}

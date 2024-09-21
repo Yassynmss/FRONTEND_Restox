@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Front-office/home/home.component';
 import { AddAdressComponent } from './adress/add-adress/add-adress.component';
@@ -33,6 +33,8 @@ import { AddMenuComponent } from './Menu/add-menu/add-menu.component';
 import { GetallMenuComponent } from './Menu/getall-menu/getall-menu.component';
 import { EditMenuComponent } from './Menu/edit-menu/edit-menu.component';
 import { AddMenuPageComponent } from './MenuPage/add-menu-page/add-menu-page.component';
+import { MenuuComponent } from './menuu/menuu.component';
+import { ContactussComponent } from './Front-office/contactuss/contactuss.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -68,7 +70,8 @@ const routes: Routes = [
   {path:'allmenu' , component:GetallMenuComponent},
   {path:'editmenu/:id' , component:EditMenuComponent},
   {path:'addmenupage', component:AddMenuPageComponent},
- // {path:'menuu', component:MenuuComponent}
+  {path:'menuu', component:MenuuComponent},
+  {path:'contactus' , component:ContactussComponent}
 
 ];
 

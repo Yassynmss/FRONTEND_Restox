@@ -269,6 +269,9 @@ getAllLanguages(): Observable<Language[]> {
 getAllItemss(): Observable<ItemPrice[]> {
   return this.http.get<ItemPrice[]>(`${this.baseUrl}/Item`);
 }
+getAllItems(): Observable<Item[]> {
+  return this.http.get<Item[]>(`${this.baseUrl}/Item`);
+}
 getDeliveryTypes(): Observable<DeliveryType[]> {
   return this.http.get<DeliveryType[]>(`${this.baseUrl}/DeliveryType`);
 }

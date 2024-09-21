@@ -10,11 +10,11 @@ import { CRUDService } from 'src/app/Services/crud.service';
 })
 export class AddCombiComponent implements OnInit {
   combiForm: FormGroup;
-  menuPages: any[] = []; // Pour stocker les pages récupérées
+  menuPages: any[] = []; 
 
   constructor(private fb: FormBuilder, private combiService: CRUDService, private router: Router) {
     this.combiForm = this.fb.group({
-      pageID: [null, Validators.required], // Corrected name to pageID
+      pageID: [null, Validators.required], 
       combiCode: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
       discount: [0, [Validators.required, Validators.min(0)]],

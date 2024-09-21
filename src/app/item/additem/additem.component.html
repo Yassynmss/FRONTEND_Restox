@@ -2,6 +2,13 @@
     <div class="form-container">
       <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
+          <label for="itemPriceID">itemPrice ID:</label>
+          <select id="itemPriceID" formControlName="itemPriceID" class="form-input">
+            <option *ngFor="let itemPrice of itempriceList" [value]="itemPrice.itemPriceID">{{ itemPrice.itemPriceID }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label for="itemOrder">Item Order:</label>
           <input type="number" id="itemOrder" formControlName="itemOrder" class="form-input">
         </div>
@@ -15,7 +22,12 @@
           <label for="animationUrl">Animation URL:</label>
           <input type="text" id="animationUrl" formControlName="animationUrl" class="form-input">
         </div>
-  
+        <div>
+          <label for="name">Item Type:</label>
+          <select id="name" formControlName="name" class="form-input">
+            <option *ngFor="let type of itemTypes" [value]="type.value">{{ type.label }}</option>
+          </select>
+        </div>
         <div class="form-group">
           <label for="pageID">Page ID:</label>
           <select id="pageID" formControlName="pageID" class="form-input">

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './navbarfront.component.html',
-  styleUrl: './navbarfront.component.css'
+  styleUrls: ['../../../assets/css/style-starter.css']
 })
 export class NavbarfrontComponent {
 

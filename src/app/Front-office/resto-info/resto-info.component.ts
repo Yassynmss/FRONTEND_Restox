@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-resto-info',
   templateUrl: './resto-info.component.html',
-  styleUrls: ['./resto-info.component.css']
+  styleUrls: ['../../../assets/css/style-starter.css']
 })
 export class RestoInfoComponent implements OnInit {
   addresses: adress[] = [];

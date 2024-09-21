@@ -5,7 +5,7 @@ import { CRUDService } from 'src/app/Services/crud.service';
 @Component({
   selector: 'app-dishes-info',
   templateUrl: './dishes-info.component.html',
-  styleUrls: ['./dishes-info.component.css']
+  styleUrls: ['../../../assets/css/style-starter.css']
 })
 export class DishesInfoComponent implements OnInit {
   items: Item[] = [];

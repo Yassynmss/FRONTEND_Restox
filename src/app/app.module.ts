@@ -33,6 +33,10 @@ import { AdditemComponent } from './item/additem/additem.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { QRCodeModule } from 'angularx-qrcode';
 import { AddCurrencyComponent } from './Currency/add-currency/add-currency.component';
+import { MenuuComponent } from './menuu/menuu.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { FilterItemTypePipe } from './filter-item-type.pipe';
+import { ContactussComponent } from './Front-office/contactuss/contactuss.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,9 @@ import { AddCurrencyComponent } from './Currency/add-currency/add-currency.compo
     LoginComponent,
     AddCombiComponent,
     AddCurrencyComponent,
+    MenuuComponent,
+    FilterItemTypePipe,
+    ContactussComponent,
     
   ],
   imports: [
@@ -69,7 +76,8 @@ import { AddCurrencyComponent } from './Currency/add-currency/add-currency.compo
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    QRCodeModule
+    QRCodeModule,
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent],

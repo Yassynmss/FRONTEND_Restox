@@ -9,6 +9,7 @@
     padding-top: 4cm; /* Ajouter un espace en haut */
     padding: 2cm; /* Espace autour du conteneur */
     box-sizing: border-box;
+    padding-top: 5cm; /* Ajouter un espace en haut */
   }
   
   /* Style pour le conteneur du formulaire */

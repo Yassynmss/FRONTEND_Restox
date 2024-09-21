@@ -20,14 +20,14 @@ export class AddItemPriceComponent implements OnInit {
 
   ngOnInit() {
     this.addItemPriceForm = this.fb.group({
-      itemID: ['', Validators.required],
+     // itemID: ['', Validators.required],
       currencyID: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       discount: ['', [Validators.required, Validators.min(0)]],
       displayPrice: [{ value: '', disabled: true }, [Validators.required, Validators.min(0)]],
     });
 
-    this.loadItems();
+   // this.loadItems();
     this.loadCurrencies();
 
     this.addItemPriceForm.get('price')!.valueChanges.subscribe(() => this.updateDisplayPrice());
