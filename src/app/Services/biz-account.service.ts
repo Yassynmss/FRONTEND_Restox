@@ -13,10 +13,11 @@ export class BizAccountService {
 
   constructor(private http: HttpClient) { }
 
-  register(newBizAccount: BizAccount): Observable<BizAccount> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<BizAccount>(`${this.baseUrl}/register`, newBizAccount, { headers });
-  }
+ // Updated register method to accept FormData
+ register(formData: FormData): Observable<any> {
+  // Send FormData without headers to allow automatic boundary handling
+  return this.http.post<any>(`${this.baseUrl}/register`, formData);
+}
 
   login(credentials: login): Observable<any> {
     const url = `${this.baseUrl}/login`;

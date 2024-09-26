@@ -12,7 +12,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  siteKey: string = '6Ld5DEkqAAAAAFYvYyc3EG4rJ4n7JUNzugGmAnAU'; // Remplacez par votre propre clé de site reCAPTCHA
+  siteKey: string = '6Ld5DEkqAAAAAFYvYyc3EG4rJ4n7JUNzugGmAnAU'; 
 
   constructor(
     private fb: FormBuilder,

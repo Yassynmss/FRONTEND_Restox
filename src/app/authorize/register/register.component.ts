@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BizAccountService } from 'src/app/Services/biz-account.service';
 
@@ -25,48 +25,92 @@ export class RegisterComponent {
       fullname: ['', [Validators.required]],
       isVerified: [false],
       isLocked: [false],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
+      addresses: this.fb.array([]) , // Empty initially
+      photo: [null]
     });
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const formValues = this.registerForm.value;
-
-      const newBizAccount = {
-        pseudo: formValues.pseudo,
-        organization: formValues.organization,
-        password: formValues.password,
-        email: formValues.email,
-        phone: formValues.phone,
-        fullName: formValues.fullname,
-        datCrea: new Date().toISOString(),  // Correspond à l'exemple de backend
-        datUpt: new Date().toISOString(),
-        isVerified: formValues.isVerified,
-        isLocked: formValues.isLocked,
-        roles: [
-          { name: this.getRoleEnum(formValues.role) }  // Convertir le rôle en Enum
-        ]
-      };
-
-      // Appel au service pour s'enregistrer
-      this.bizAccountService.register(newBizAccount).subscribe(() => {
-        this.router.navigate(['/']);  // Redirection après succès
-      });
-
-      console.log('Data envoyée:', newBizAccount);  // Debug: supprimer en production
-    } else {
-      console.log('Formulaire invalide');
-    }
+  createAddressGroup(): FormGroup {
+    return this.fb.group({
+      line1: ['', Validators.required],
+      line2: [''],
+      ville: ['', Validators.required]
+    });
   }
 
-  // Fonction pour convertir la chaîne de rôle en Enum
+  get addresses(): FormArray {
+    return this.registerForm.get('addresses') as FormArray;
+  }
+
+  addAddress() {
+    this.addresses.push(this.createAddressGroup());
+  }
+
+  removeAddress(index: number) {
+    this.addresses.removeAt(index);
+  }
+
+ onSubmit() {
+  if (this.registerForm.valid) {
+    const formValues = this.registerForm.value;
+    const formData = new FormData();
+
+    formData.append('pseudo', formValues.pseudo);
+    formData.append('organization', formValues.organization);
+    formData.append('password', formValues.password);
+    formData.append('email', formValues.email);
+    formData.append('phone', formValues.phone);
+    formData.append('fullName', formValues.fullname);
+    formData.append('isVerified', formValues.isVerified.toString());
+    formData.append('isLocked', formValues.isLocked.toString());
+
+    // Convert the role string to its corresponding enum value before appending
+    const roleValue = this.getRoleEnum(formValues.role).toString();
+    formData.append('role', roleValue);
+
+    // Add addresses to FormData
+    formValues.addresses.forEach((address: any, index: number) => {
+      formData.append(`addresses[${index}].line1`, address.line1);
+      formData.append(`addresses[${index}].line2`, address.line2 || '');
+      formData.append(`addresses[${index}].ville`, address.ville);
+    });
+
+    // Add photo file if it exists
+    if (this.registerForm.get('photo')?.value) {
+      formData.append('photo', this.registerForm.get('photo')?.value);
+    }
+
+    // Call the register method in the service with FormData
+    this.bizAccountService.register(formData).subscribe(
+      () => {
+        this.router.navigate(['/']); // Navigate to the desired route on success
+      },
+      (error) => {
+        console.error('Registration failed', error); // Handle errors appropriately
+      }
+    );
+  } else {
+    console.log('Form is invalid');
+  }
+}
+   
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.registerForm.patchValue({
+        photo: file
+      });
+    }
+  }
+  
   getRoleEnum(role: string): number {
     switch (role) {
       case 'CUSTOMER': return 0;
       case 'RESTOWNER': return 1;
-      case 'USER': return 2;
-      default: return 0;  // Valeur par défaut si le rôle est inconnu
+      case 'RESTOCHEF': return 2;
+      case 'USER': return 3;
+      default: return 0;
     }
   }
 }

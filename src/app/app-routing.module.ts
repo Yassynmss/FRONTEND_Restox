@@ -35,6 +35,11 @@ import { EditMenuComponent } from './Menu/edit-menu/edit-menu.component';
 import { AddMenuPageComponent } from './MenuPage/add-menu-page/add-menu-page.component';
 import { MenuuComponent } from './menuu/menuu.component';
 import { ContactussComponent } from './Front-office/contactuss/contactuss.component';
+import { AboutUSComponent } from './Front-office/about-us/about-us.component';
+import { AboutussComponent } from './Front-office/aboutuss/aboutuss.component';
+import { AddLanguageComponent } from './Language/add-language/add-language.component';
+import { GetallLanguageComponent } from './Language/getall-language/getall-language.component';
+import { EditLanguageComponent } from './Language/edit-language/edit-language.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -71,7 +76,11 @@ const routes: Routes = [
   {path:'editmenu/:id' , component:EditMenuComponent},
   {path:'addmenupage', component:AddMenuPageComponent},
   {path:'menuu', component:MenuuComponent},
-  {path:'contactus' , component:ContactussComponent}
+  {path:'contactus' , component:ContactussComponent},
+  {path:'aboutuss' , component:AboutussComponent},
+  {path:'addlanguage', component:AddLanguageComponent},
+  {path:'all-languages'  , component:GetallLanguageComponent},
+  {path:'editlanguage/:id', component:EditLanguageComponent}
 
 ];
 

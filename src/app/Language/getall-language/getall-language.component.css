@@ -1,0 +1,58 @@
+/* Container styles */
+.language-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c2c2c; /* Dark gray background */
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Card styles */
+.language-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 15px; /* Reduced padding */
+    margin: 10px;
+    width: 250px; /* Smaller width for more compact cards */
+    transition: transform 0.2s ease-in-out;
+}
+
+.language-card:hover {
+    transform: scale(1.05);
+}
+
+/* Details and actions */
+.language-details {
+    margin-bottom: 15px;
+    color: #333; /* Dark text for better contrast on light background */
+}
+
+.language-actions {
+    text-align: center;
+}
+
+.edit-button,
+.delete-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 15px; /* Smaller buttons */
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}

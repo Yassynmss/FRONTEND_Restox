@@ -1,8 +1,6 @@
 <div class="order-detail-container">
     <div class="order-detail-card" *ngFor="let orderDetail of orderDetailList">
       <div class="order-detail-details">
-        <p><strong>Order ID:</strong> {{ orderDetail.orderID }}</p>
-        <p><strong>Item ID:</strong> {{ orderDetail.itemID }}</p>
         <p><strong>Price:</strong> {{ orderDetail.price | currency }}</p>
         <p><strong>Delivery Status:</strong> {{ orderDetail.deliveryStatus }}</p>
       </div>

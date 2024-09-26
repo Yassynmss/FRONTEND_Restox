@@ -8,9 +8,63 @@
   align-items: center;
   padding: 2cm; /* Espace autour du conteneur */
   box-sizing: border-box;
-  padding-top: 6cm; /* Ajouter un espace en haut */
+  padding-top: 4cm; /* Ajouter un espace en haut */
 
 }
+/* Base Style for Buttons */
+.styled-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Add Address Button */
+.add-address-button {
+  background-color: #5cb85c; /* Green for adding */
+}
+
+.add-address-button:hover {
+  background-color: #4cae4c; /* Darker green on hover */
+}
+
+/* Remove Address Button */
+.remove-address-button {
+  background-color: #d9534f; /* Red for removing */
+}
+
+.remove-address-button:hover {
+  background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Add Another Address Button */
+.add-another-button {
+  background-color: #337ab7; /* Blue for adding another */
+}
+
+.add-another-button:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+/* Submit Button */
+.form-button {
+  background-color: #ff8000; /* Orange */
+}
+
+.form-button:hover:not(:disabled) {
+  background-color: #e67300; /* Darker orange on hover */
+}
+
+.form-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 
 /* Style pour le conteneur du formulaire */
 .form-container {
@@ -28,6 +82,24 @@ label {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
+}
+/* Grouping form fields side by side */
+.form-group {
+  display: flex;
+  gap: 20px; /* Space between fields */
+  flex-wrap: wrap; /* Wrap fields when space is not enough */
+  margin-bottom: 15px; /* Space below the grouped fields */
+}
+
+/* Individual form fields inside groups */
+.form-field {
+  flex: 1; /* Make each field take equal space */
+  min-width: 150px; /* Minimum width to keep fields responsive */
+}
+
+/* Full-width fields that need to stretch across */
+.full-width {
+  flex: 1 1 100%; /* Full width in the group */
 }
 
 /* Style des champs de saisie */

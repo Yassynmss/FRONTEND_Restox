@@ -61,6 +61,7 @@ export class AddItemPriceComponent implements OnInit {
       this.crudService.addItemPrice(formData).subscribe(
         (response) => {
           console.log('Item Price added successfully');
+          this.router.navigate(['/allitemprice']); 
         },
         (error) => {
           console.error('Error adding Item Price:', error);

@@ -1,1 +1,35 @@
-<p>edit-language works!</p>
+<div class="edit-language-container">
+    <div class="form-wrapper">
+      <h2>Edit Language</h2>
+  
+      <form [formGroup]="editLanguageForm" (ngSubmit)="updateLanguage()">
+        <!-- Short Description Field -->
+        <div class="form-group">
+          <label for="shortDescription">Short Description</label>
+          <input type="text" id="shortDescription" formControlName="shortDescription" class="form-control" />
+          <div *ngIf="editLanguageForm.get('shortDescription')?.invalid && editLanguageForm.get('shortDescription')?.touched" class="error">
+            Short Description is required and must be less than 50 characters.
+          </div>
+        </div>
+  
+        <!-- ISO Code Field (Read-only) -->
+        <div class="form-group">
+          <label for="isoCode">ISO Code</label>
+          <input type="text" id="isoCode" formControlName="isoCode" class="form-control" readonly />
+        </div>
+  
+        <!-- Display Code Field (Read-only) -->
+        <div class="form-group">
+          <label for="displayCode">Display Code</label>
+          <input type="text" id="displayCode" formControlName="displayCode" class="form-control" readonly />
+        </div>
+  
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" [disabled]="editLanguageForm.invalid">Update Language</button>
+          <button type="button" class="btn btn-secondary" (click)="navigateToLanguageList()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

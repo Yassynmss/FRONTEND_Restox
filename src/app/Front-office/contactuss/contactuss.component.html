@@ -72,8 +72,18 @@
                               </div>
                               <div class="col-sm-6 form-input">
                                 <label for="w3lPhone">Phone Number*</label>
-                                <input type="number" id="w3lPhone" placeholder="" />
+                                <input type="text" formControlName="phone" id="w3lPhone" placeholder="" required />
+                                <div *ngIf="ContactItem.get('phone')?.invalid && (ContactItem.get('phone')?.touched || ContactItem.get('phone')?.dirty)">
+                                  <ng-container *ngIf="ContactItem.get('phone')?.errors as errors">
+                                    <small class="text-danger" *ngIf="errors['required']">Phone number is required.</small>
+                                    <small class="text-danger" *ngIf="errors['pattern']">Invalid phone number.</small>
+                                  </ng-container>
+                                </div>
                               </div>
+                              
+                              
+                              
+                              
                             </div>
                             <div class="form-input">
                               <label for="w3lMessage">Message(Required)*</label>

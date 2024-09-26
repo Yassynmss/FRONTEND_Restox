@@ -1,63 +1,131 @@
 <div class="background">
   <div class="form-container">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="pseudo">Pseudo</label>
-        <input id="pseudo" class="form-input" formControlName="pseudo">
-        <div *ngIf="registerForm.get('pseudo')?.invalid && registerForm.get('pseudo')?.touched" class="error-message">
-          Pseudo is required.
+      <div class="form-group">
+        <!-- Pseudo Field -->
+        <div class="form-field">
+          <label for="pseudo">Pseudo</label>
+          <input id="pseudo" class="form-input" formControlName="pseudo" />
+          <div *ngIf="registerForm.get('pseudo')?.invalid && registerForm.get('pseudo')?.touched" class="error-message">
+            Pseudo is required.
+          </div>
+        </div>
+
+        <!-- Organization Field -->
+        <div class="form-field">
+          <label for="organization">Organization</label>
+          <input id="organization" class="form-input" formControlName="organization" />
+          <div *ngIf="registerForm.get('organization')?.invalid && registerForm.get('organization')?.touched" class="error-message">
+            Organization is required.
+          </div>
         </div>
       </div>
 
-      <div>
-        <label for="organization">Organization</label>
-        <input id="organization" class="form-input" formControlName="organization">
-        <div *ngIf="registerForm.get('organization')?.invalid && registerForm.get('organization')?.touched" class="error-message">
-          Organization is required.
+      <div class="form-group">
+        <!-- Password Field -->
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input id="password" type="password" class="form-input" formControlName="password" />
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+            Password must be at least 6 characters long.
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" class="form-input" formControlName="email" />
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+            Valid email is required.
+          </div>
         </div>
       </div>
 
-      <div>
-        <label for="password">Password</label>
-        <input id="password" type="password" class="form-input" formControlName="password">
-        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
-          Password must be at least 6 characters long.
+      <div class="form-group">
+        <!-- Phone Field -->
+        <div class="form-field">
+          <label for="phone">Phone</label>
+          <input id="phone" class="form-input" formControlName="phone" />
+          <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="error-message">
+            Valid phone is required.
+          </div>
+        </div>
+
+        <!-- FullName Field -->
+        <div class="form-field">
+          <label for="fullname">FullName</label>
+          <input id="fullname" class="form-input" formControlName="fullname" />
+          <div *ngIf="registerForm.get('fullname')?.invalid && registerForm.get('fullname')?.touched" class="error-message">
+            Valid fullname is required.
+          </div>
         </div>
       </div>
 
-      <div>
-        <label for="email">Email</label>
-        <input id="email" class="form-input" formControlName="email">
-        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
-          Valid email is required.
-        </div>
-      </div>
-      <div>
-        <label for="phone">Phone</label>
-        <input id="phone" class="form-input" formControlName="phone">
-        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('phone')?.touched" class="error-message">
-          Valid phone is required.
-        </div>
-      </div>
-      <div>
-        <label for="fullname">FullName</label>
-        <input id="fullname" class="form-input" formControlName="fullname">
-        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('fullname')?.touched" class="error-message">
-          Valid fullname is required.
-        </div>
-      </div>
-      <div>
+      <!-- Role Field -->
+      <div class="form-field full-width">
         <label for="role">Role</label>
         <select id="role" class="form-input" formControlName="role">
           <option value="CUSTOMER">Customer</option>
           <option value="RESTOWNER">Restaurant Owner</option>
+          <option value="RESTOCHEF">RESTOCHEF</option>
           <option value="USER">User</option>
         </select>
         <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">
           Role is required.
         </div>
       </div>
-      
+
+      <!-- Photo Upload -->
+      <div class="form-field full-width">
+        <label for="photo">Photo</label>
+        <input id="photo" type="file" class="form-input" (change)="onFileChange($event)" />
+      </div>
+
+      <!-- Add Address Button -->
+      <div class="form-group">
+        <button type="button" class="styled-button add-address-button" (click)="addAddress()">Add Address</button>
+      </div>
+
+      <!-- Addresses Section -->
+      <div formArrayName="addresses" *ngIf="addresses.length > 0">
+        <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+          <h4>Address {{ i + 1 }}</h4>
+          <div class="form-group">
+            <div class="form-field">
+              <label for="line1">Line 1</label>
+              <input id="line1" class="form-input" formControlName="line1" />
+              <div *ngIf="address.get('line1')?.invalid && address.get('line1')?.touched" class="error-message">
+                Line 1 is required.
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="line2">Line 2</label>
+              <input id="line2" class="form-input" formControlName="line2" />
+            </div>
+          </div>
+
+          <div class="form-field full-width">
+            <label for="ville">City</label>
+            <input id="ville" class="form-input" formControlName="ville" />
+            <div *ngIf="address.get('ville')?.invalid && address.get('ville')?.touched" class="error-message">
+              City is required.
+            </div>
+          </div>
+
+          <!-- Remove Address Button -->
+          <button type="button" class="styled-button remove-address-button" (click)="removeAddress(i)" *ngIf="addresses.length > 1">
+            Remove Address
+          </button>
+        </div>
+      </div>
+
+      <!-- Add Another Address Button -->
+      <button type="button" class="styled-button add-another-button" (click)="addAddress()" *ngIf="addresses.length > 0">
+        + Add Another Address
+      </button>
+
+      <!-- Submit Button -->
       <button type="submit" class="form-button" [disabled]="registerForm.invalid">Register</button>
     </form>
   </div>

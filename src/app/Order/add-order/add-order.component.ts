@@ -92,6 +92,8 @@ export class AddOrderComponent implements OnInit {
       this.crudService.addOrder(orderData).subscribe(
         response => {
           console.log('Order added successfully', response);
+          this.router.navigate(['/allorder']);
+
         },
         error => {
           console.error('Error adding order', error);

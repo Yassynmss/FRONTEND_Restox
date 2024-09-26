@@ -1,35 +1,38 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ItemType } from 'src/app/Models/ItemType';
 import { CRUDService } from 'src/app/Services/crud.service'; 
+import { HttpClientModule } from '@angular/common/http'; // Pour les requêtes HTTP si nécessaire
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-additem',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, QRCodeModule, HttpClientModule],
   templateUrl: './additem.component.html',
-  styleUrls: ['./additem.component.css']
+  styleUrls: ['./additem.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdditemComponent implements OnInit {
   itemForm: FormGroup;
-  menuPages: any[] = []; 
-  combiList: any[] = []; 
+  menuPages: any[] = [];
+  combiList: any[] = [];
   itempriceList: any[] = [];
   itemTypes = [
     { value: 0, label: 'BREAKFAST' },
     { value: 1, label: 'LUNCH' },
     { value: 2, label: 'DINNER' }
   ];
+
   constructor(private fb: FormBuilder, private crudService: CRUDService) {
     this.itemForm = this.fb.group({
-      itemPriceID:[null, Validators.required],
+      itemPriceID: [null, Validators.required],
       shortDescription: ['', Validators.required],
       itemOrder: [null, [Validators.required, Validators.min(1)]],
-      animationUrl: ['', Validators.required],
       pageID: [null, Validators.required],
       combiID: [null, Validators.required],
       name: [null, Validators.required],
+      imageFile: [null, Validators.required] // File upload field
     });
   }
 
@@ -38,20 +41,22 @@ export class AdditemComponent implements OnInit {
     this.getItemPrices();
     this.getCombiList();
   }
+
   getItemPrices() {
     this.crudService.getAllItemPrices().subscribe(
       data => {
-        this.itempriceList = data; 
+        this.itempriceList = data;
       },
       error => {
-        console.error('Error fetching menu pages', error);
+        console.error('Error fetching item prices', error);
       }
     );
   }
+
   getMenuPages() {
     this.crudService.getMenuPages().subscribe(
       data => {
-        this.menuPages = data; 
+        this.menuPages = data;
       },
       error => {
         console.error('Error fetching menu pages', error);
@@ -62,7 +67,7 @@ export class AdditemComponent implements OnInit {
   getCombiList() {
     this.crudService.getCombiList().subscribe(
       data => {
-        this.combiList = data; 
+        this.combiList = data;
       },
       error => {
         console.error('Error fetching combi list', error);
@@ -72,11 +77,16 @@ export class AdditemComponent implements OnInit {
 
   onSubmit() {
     if (this.itemForm.valid) {
-    
-
       const itemData = this.itemForm.value;
-      itemData.name = Number(itemData.name);
-      this.crudService.addItem(itemData).subscribe(
+      const formData = new FormData();
+      for (const key in itemData) {
+        if (itemData.hasOwnProperty(key)) {
+          formData.append(key, itemData[key]);
+        }
+      }
+      formData.set('name', Number(itemData.name).toString()); // Ensure 'name' is a number
+
+      this.crudService.addItem(formData).subscribe(
         response => {
           console.log('Item added successfully', response);
         },
@@ -84,6 +94,15 @@ export class AdditemComponent implements OnInit {
           console.error('Error adding item', error);
         }
       );
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.itemForm.patchValue({
+        imageFile: input.files[0]
+      });
     }
   }
 }

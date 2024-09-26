@@ -1,1 +1,14 @@
-<p>getall-language works!</p>
+<div class="language-container">
+    <div class="language-card" *ngFor="let language of languageList">
+      <div class="language-details">
+        <p><strong>Short Description:</strong> {{ language.shortDescription }}</p>
+        <p><strong>ISO Code:</strong> {{ language.isoCode }}</p>
+        <p><strong>Display Code:</strong> {{ language.displayCode }}</p>
+      </div>
+      <div class="language-actions">
+        <button (click)="editLanguage(language)" class="edit-button">Edit</button>
+        <button (click)="language.languageID !== undefined && deleteLanguage(language.languageID)" class="delete-button">Delete</button>
+      </div>
+    </div>
+  </div>
+  

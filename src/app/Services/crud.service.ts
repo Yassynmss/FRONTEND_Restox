@@ -53,6 +53,12 @@ export class CRUDService {
         catchError(this.handleError) // Gestion des erreurs
       );
   }
+  deleteLanguage(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/Language/${id}`)
+      .pipe(
+        catchError(this.handleError) // Gestion des erreurs
+      );
+  }
   deleteCombi(id:number): Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/Combi/${id}`)
     .pipe(
@@ -101,6 +107,9 @@ export class CRUDService {
   getAllCombis(): Observable<Combi[]>{
     return this.http.get<Combi[]>(`${this.baseUrl}/Combi`);
   }
+  getChefs(): Observable<BizAccount[]>{
+    return this.http.get<BizAccount[]>(`${this.baseUrl}/Auth/restochefs`);
+  }
   getOrders(): Observable<Order[]>{
     return this.http.get<Order[]>(`${this.baseUrl}/Order`);
   }
@@ -117,6 +126,9 @@ export class CRUDService {
   }
   getMenuById(id: number): Observable<Menu> {
     return this.http.get<Menu>(`${this.baseUrl}/Menu/get-menu/${id}`);
+  }
+  getLanguageById(id: number): Observable<Language> {
+    return this.http.get<Language>(`${this.baseUrl}/Language/${id}`);
   }
   getOrderDetailById(id: number): Observable<OrderDetail> {
     return this.http.get<OrderDetail>(`${this.baseUrl}/OrderDetail/${id}`);
@@ -135,6 +147,13 @@ export class CRUDService {
   }
   updateAdress(adress: adress): Observable<adress> {
     return this.http.put<adress>(`${this.baseUrl}/Adress/${adress.adressID}`, adress, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  updateLanguage(langauge: Language): Observable<Language> {
+    return this.http.put<Language>(`${this.baseUrl}/Language/${langauge.languageID}`, langauge, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -244,6 +263,9 @@ addMenuPage(menupage: any):Observable<any>{
 addItem(item: any):Observable<any>{
   return this.http.post(`${this.baseUrl}/item`, item);
 }
+addLanguage(language : any):Observable<any>{
+  return this.http.post(`${this.baseUrl}/Language`, language);
+}
 addCurrency(currency : any):Observable<any>{
   return this.http.post(`${this.baseUrl}/Currency`, currency);
 }
@@ -301,11 +323,13 @@ getRESTOCHEF(): Observable<any[]> {
 
 
 
+getNumberOfUsersByType(userType: string): Observable<number> {
+  return this.http.get<number>(`${this.baseUrl}/Auth/count?type=${userType}`);
+}
 
-
-
-
-
+getTotalOrders(): Observable<number> {
+  return this.http.get<number>(`${this.baseUrl}/Order/count`);
+}
 
 
 

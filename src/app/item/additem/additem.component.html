@@ -1,49 +1,72 @@
-<div class="background"> 
+<div class="background">
     <div class="form-container">
       <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="itemPriceID">itemPrice ID:</label>
-          <select id="itemPriceID" formControlName="itemPriceID" class="form-input">
-            <option *ngFor="let itemPrice of itempriceList" [value]="itemPrice.itemPriceID">{{ itemPrice.itemPriceID }}</option>
-          </select>
+          <div class="form-field">
+            <label for="itemPriceID">Item Price:</label>
+            <select id="itemPriceID" formControlName="itemPriceID" class="form-input">
+              <option *ngFor="let itemPrice of itempriceList" [value]="itemPrice.itemPriceID">
+                {{ itemPrice.price }}
+              </option>
+            </select>
+          </div>
+  
+          <div class="form-field">
+            <label for="itemOrder">Item Order:</label>
+            <input type="number" id="itemOrder" formControlName="itemOrder" class="form-input" />
+          </div>
         </div>
+  
+        <div class="form-group">
+          <div class="form-field">
+            <label for="shortDescription">Short Description:</label>
+            <input type="text" id="shortDescription" formControlName="shortDescription" class="form-input" />
+          </div>
+  
+          <div class="form-field">
+            <label for="imageFile">Image File:</label>
+            <input type="file" id="imageFile" (change)="onFileSelected($event)" class="form-input" required />
+          </div>
+        </div>
+  
 
+  
         <div class="form-group">
-          <label for="itemOrder">Item Order:</label>
-          <input type="number" id="itemOrder" formControlName="itemOrder" class="form-input">
+          <div class="form-field full-width">
+            <label for="name">Item Type:</label>
+            <select id="name" formControlName="name" class="form-input">
+              <option *ngFor="let type of itemTypes" [value]="type.value">
+                {{ type.label }}
+              </option>
+            </select>
+          </div>
         </div>
   
         <div class="form-group">
-          <label for="shortDescription">Short Description:</label>
-          <input type="text" id="shortDescription" formControlName="shortDescription" class="form-input">
+          <div class="form-field">
+            <label for="pageID">Page Order:</label>
+            <select id="pageID" formControlName="pageID" class="form-input">
+              <option *ngFor="let page of menuPages" [value]="page.menuPageID">
+                {{ page.pageOrder }}
+              </option>
+            </select>
+          </div>
+  
+          <div class="form-field">
+            <label for="combiID">Combi Code:</label>
+            <select id="combiID" formControlName="combiID" class="form-input">
+              <option *ngFor="let combi of combiList" [value]="combi.combiID">
+                {{ combi.combiCode }}
+              </option>
+            </select>
+          </div>
         </div>
   
-        <div class="form-group">
-          <label for="animationUrl">Animation URL:</label>
-          <input type="text" id="animationUrl" formControlName="animationUrl" class="form-input">
-        </div>
-        <div>
-          <label for="name">Item Type:</label>
-          <select id="name" formControlName="name" class="form-input">
-            <option *ngFor="let type of itemTypes" [value]="type.value">{{ type.label }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="pageID">Page ID:</label>
-          <select id="pageID" formControlName="pageID" class="form-input">
-            <option *ngFor="let page of menuPages" [value]="page.menuPageID">{{ page.pageOrder }}</option>
-          </select>
-        </div>
-  
-        <div class="form-group">
-          <label for="combiID">Combi ID:</label>
-          <select id="combiID" formControlName="combiID" class="form-input">
-            <option *ngFor="let combi of combiList" [value]="combi.combiID">{{ combi.combiID }}</option>
-          </select>
-        </div>
-  
-        <button type="submit" class="form-button">Add Item</button>
-      </form>
+        <button type="submit" class="form-button" [disabled]="itemForm.invalid">Add Item</button>
+           <!--  <qrcode [qrdata]="'https://localhost:4200/allcombi'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://localhost:4200/allcombi&size=256x256" alt="QR Code">
+    -->
+            </form>
     </div>
   </div>
   

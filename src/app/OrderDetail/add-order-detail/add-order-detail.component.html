@@ -6,7 +6,7 @@
         <div class="form-row">
           <!-- Order Selection -->
           <div class="form-group">
-            <label for="orderID">Order:</label>
+            <label for="orderID">Date d'Order:</label>
             <select id="orderID" formControlName="orderID" class="form-input">
               <option value="" disabled selected>-- Select Order --</option>
               <option *ngFor="let order of orders" [value]="order.orderID">{{ order.orderDate }}</option>

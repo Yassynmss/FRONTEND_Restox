@@ -23,7 +23,7 @@
           <div *ngFor="let item of items | filterItemType:itemTypes.BREAKFAST" class="menu-item">
             <div class="row no-gutters">
               <div class="col-9 menu-item-name">
-                <h6>{{ item.animationUrl }}</h6>
+                <h6>{{ item.shortDescription }}</h6>
               </div>
               <div class="col-3 menu-item-price text-right">
                 <h6 *ngIf="getPrice(item) !== undefined">{{ getPrice(item) }}$</h6>

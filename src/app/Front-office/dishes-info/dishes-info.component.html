@@ -1,4 +1,3 @@
-<!-- DishesInfoComponent HTML -->
 <section class="w3l-recipes py-5" id="items-section">
     <div class="container py-md-5 py-4">
         <div class="row">
@@ -12,7 +11,8 @@
   
                 <div *ngFor="let item of items">
                     <div class="menu-sec mt-5 pt-md-4">
-                        <div class="row border-dot no-gutters">
+                        <div class="row border-dot no-gutters align-items-center">
+                           *
                             <div class="col-8 menu-item-name-home">
                                 <h6>{{ item.shortDescription }}</h6>
                             </div>
@@ -27,10 +27,6 @@
                         </div>
                     </div>
                 </div>
-  
-              
-               <!-- <qrcode [qrdata]="'https://localhost:4200/allcombi'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://localhost:4200/allcombi&size=256x256" alt="QR Code">-->
 
                 <a class="btn btn-style-white btn-style-border mt-5" href="about.html">View More</a>
             </div>
@@ -39,5 +35,4 @@
             </div>
         </div>
     </div>
-  </section>
-  
+</section>

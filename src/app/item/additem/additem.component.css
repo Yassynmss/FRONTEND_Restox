@@ -1,74 +1,145 @@
 /* Style pour le conteneur de fond */
 .background {
-    background-color: #2c2c2c; /* Gris foncé */
-    height: 100vh; /* Hauteur complète de la fenêtre */
-    width: 100vw; /* Largeur complète de la fenêtre */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 4cm; /* Ajouter un espace en haut */
-    padding: 2cm; /* Espace autour du conteneur */
-    box-sizing: border-box;
-    padding-top: 5cm; /* Ajouter un espace en haut */
-  }
-  
-  /* Style pour le conteneur du formulaire */
-  .form-container {
-    background-color: #ffffff; /* Fond blanc pour le formulaire */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  /* Style des labels */
-  label {
-    color: #ff8000; /* Orange */
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  /* Style des champs de saisie */
-  .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-    background-color: #f9f9f9; /* Fond clair pour les champs */
-  }
-  
-  .form-input:focus {
-    border-color: #ff8000; /* Bordure orange lors du focus */
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
-  }
-  
-  /* Style pour le bouton de soumission */
-  .form-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff8000; /* Orange */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .form-button:hover:not(:disabled) {
-    background-color: #e67300; /* Orange plus foncé au survol */
-  }
-  
-  .form-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+  background-color: #2c2c2c; /* Gris foncé */
+  height: 100vh; /* Hauteur complète de la fenêtre */
+  width: 100vw; /* Largeur complète de la fenêtre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2cm; /* Espace autour du conteneur */
+  box-sizing: border-box;
+  padding-top: 4cm; /* Ajouter un espace en haut */
+}
+
+/* Style pour le conteneur du formulaire */
+.form-container {
+  background-color: #ffffff; /* Fond blanc pour le formulaire */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Style des labels */
+label {
+  color: #ff8000; /* Orange */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Groupement des champs de formulaire côte à côte */
+.form-group {
+  display: flex;
+  gap: 20px; /* Espace entre les champs */
+  flex-wrap: wrap; /* Enrouler les champs lorsque l'espace est insuffisant */
+  margin-bottom: 15px; /* Espace en dessous du groupe de champs */
+}
+
+/* Champs de formulaire individuels dans les groupes */
+.form-field {
+  flex: 1; /* Faire en sorte que chaque champ prenne un espace égal */
+  min-width: 150px; /* Largeur minimale pour garder les champs réactifs */
+}
+
+/* Champs à largeur complète qui doivent s'étendre sur toute la largeur */
+.full-width {
+  flex: 1 1 100%; /* Largeur complète dans le groupe */
+}
+
+/* Style des champs de saisie */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Fond clair pour les champs */
+}
+
+.form-input:focus {
+  border-color: #ff8000; /* Bordure orange lors du focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
+}
+
+/* Style pour le bouton de soumission */
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff8000; /* Orange */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover:not(:disabled) {
+  background-color: #e67300; /* Orange plus foncé au survol */
+}
+
+.form-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
+  color: #ff8000; /* Orange */
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Base Style for Buttons */
+.styled-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Add Address Button */
+.add-address-button {
+  background-color: #5cb85c; /* Green for adding */
+}
+
+.add-address-button:hover {
+  background-color: #4cae4c; /* Darker green on hover */
+}
+
+/* Remove Address Button */
+.remove-address-button {
+  background-color: #d9534f; /* Red for removing */
+}
+
+.remove-address-button:hover {
+  background-color: #c9302c; /* Darker red on hover */
+}
+
+/* Add Another Address Button */
+.add-another-button {
+  background-color: #337ab7; /* Blue for adding another */
+}
+
+.add-another-button:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+}

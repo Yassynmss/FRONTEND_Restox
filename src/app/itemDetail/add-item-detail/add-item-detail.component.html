@@ -14,7 +14,7 @@
 
       <!-- Short Description (Language) Selection -->
       <div class="form-group">
-        <label for="languageID">Short Description</label>
+        <label for="languageID">Short Description de language</label>
         <select id="languageID" formControlName="languageID" class="form-input">
           <option *ngFor="let language of Language" [value]="language.languageID">{{ language.shortDescription }}</option>
         </select>

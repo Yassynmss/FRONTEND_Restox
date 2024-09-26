@@ -37,6 +37,7 @@ import { MenuuComponent } from './menuu/menuu.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { FilterItemTypePipe } from './filter-item-type.pipe';
 import { ContactussComponent } from './Front-office/contactuss/contactuss.component';
+import { AboutussComponent } from './Front-office/aboutuss/aboutuss.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ContactussComponent } from './Front-office/contactuss/contactuss.compon
     MenuuComponent,
     FilterItemTypePipe,
     ContactussComponent,
+    AboutussComponent,
     
   ],
   imports: [
@@ -77,7 +79,8 @@ import { ContactussComponent } from './Front-office/contactuss/contactuss.compon
     MatSelectModule,
     FormsModule,
     QRCodeModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

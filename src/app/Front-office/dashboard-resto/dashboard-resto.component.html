@@ -2,32 +2,71 @@
     <div class="container py-md-5 py-4">
         <div class="row">
             <div class="col-md-7 pr-lg-5">
-                <h5 class="text-new mb-4">Hello. <br>Our structure has been present for over 36 years. <br>We
-                    make
-                    the best !
-                </h5>
-                <p class="mb-3">Nibh eu consequat magna ipsum ac ex. Nulla iaculis
-                    tincidunt elit, tortor luctus sit amet.
-                </p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                    architecto beatae vitae dicta sunt explicabo.</p>
-                <a href="about.html" class="btn btn-style-white btn-style-primary mt-lg-5 mt-4">Learn More</a>
+                <div class="scan-text">
+                    <span id="animatedText">Explore our menu by scanning the QR code</span>
+                </div>
+                <qrcode [qrdata]="'https://localhost:4200/menuu'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
             </div>
             <div class="col-md-5 mt-md-0 mt-5">
                 <div class="counter text-center">
-                    <div class="timer count-title count-number" data-to="6370" data-speed="1500"></div>
+                    <div class="count-number">{{customersCount}}</div>
                     <p class="count-text mt-2">happy customer's</p>
                 </div>
                 <div class="counter text-center mt-5">
-                    <div class="timer count-title count-number" data-to="421" data-speed="1500"></div>
+                    <div class="count-number">{{chefsCount}}</div>
                     <p class="count-text mt-2">master chef's</p>
                 </div>
                 <div class="counter text-center mt-5">
-                    <div class="timer count-title count-number" data-to="7300" data-speed="1500"></div>
+                    <div class="count-number">{{ordersCount}}</div>
                     <p class="count-text mt-2">Order's Everyday</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<style>
+.counter {
+    background-color: orange;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.count-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}
+
+.count-text {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.scan-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: orange;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+#animatedText {
+    display: inline-block;
+    opacity: 0;
+    animation: typing 3s steps(40, end), blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; opacity: 1; }
+    to { width: 100%; opacity: 1; }
+}
+
+@keyframes blink-caret {
+    from, to { border-right-color: transparent; }
+    50% { border-right-color: orange; }
+}
+
+</style>

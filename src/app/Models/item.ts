@@ -12,7 +12,7 @@ export interface Item {
     itemPriceID?: number;
     shortDescription?: string;
     itemOrder?: number; 
-    animationUrl?: string;
+    animationUrl?: string; // Ceci doit recevoir le chemin du fichier
     pageID?: number;
     combiID?: number;
     menuPage?: MenuPage; 
@@ -22,4 +22,5 @@ export interface Item {
     orderDetails?: OrderDetail[]; 
     customerReview?: CustomerReview; 
     itemType?: ItemType; 
+    imageFile?: File; // Ajoutez ce champ pour le fichier d'image
 }

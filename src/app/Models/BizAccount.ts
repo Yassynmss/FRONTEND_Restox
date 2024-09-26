@@ -17,6 +17,7 @@ export class BizAccount {
     public adresses?: adress[]; 
     public orders?: Order[];    
     public Role?: Role;
+    public photo?:string;
 }
 export class login {
     public pseudo?: string;
